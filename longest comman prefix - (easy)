@@ -1,0 +1,28 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+    // first nama yedukura str thn longest nu consider panikanum
+    if(strs.length == 0 || strs == null)
+    {
+        return "";
+    }
+    String prefix = strs[0];
+    // ipo matha string kuda compare pananum
+    for(int i=1; i<strs.length; i++)
+    {
+        //oru oru string kum athoda starting prefix iruka nu paakum
+        while(strs[i].indexOf(prefix) != 0)
+        {
+            //substring pinadi irundhu reduce pananum
+            prefix = prefix.substring(0,prefix.length()-1);
+
+            if(prefix.isEmpty())
+            {
+                return "";
+            }
+        }
+    }
+    return prefix;
+
+        
+    }
+}

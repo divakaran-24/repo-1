@@ -1,0 +1,27 @@
+import java.util.*;
+
+class Solution {
+    public List<String> getUniqueAnagrams(String[] words) {
+        Map<String, String> map = new LinkedHashMap<>();
+
+        for (String word : words) {
+            char[] chars = word.toCharArray();
+            Arrays.sort(chars);
+            String key = new String(chars);
+
+            // Only add the first word with this sorted key
+            if (!map.containsKey(key)) {
+                map.put(key, word);
+            }
+        }
+
+        return new ArrayList<>(map.values());
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        String[] input = {"hello", "elloh", "anagram", "gramnaa"};
+        List<String> output = sol.getUniqueAnagrams(input);
+        System.out.println(output); // Output: [hello, anagram]
+    }
+}
